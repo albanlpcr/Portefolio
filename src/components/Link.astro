@@ -6,15 +6,30 @@ interface Props extends HTMLAttributes<"a"> {
   addClass?: string;
 }
 const { text, addClass, href, ...props } = Astro.props;
+
+// Construire l'URL correcte avec le base
+const base = Astro.base || "/";
+let finalHref: string | URL | undefined = href;
+if (href && typeof href === "string" && href.startsWith("/")) {
+  // Préfixer avec Astro.base si c'est un chemin absolu
+  const basePath = base.endsWith("/") ? base.slice(0, -1) : base;
+  const path = href === "/" ? "/" : href;
+  finalHref = basePath + path;
+} else if (href instanceof URL) {
+  finalHref = href;
+}
+
 let isActive: boolean;
 if (!href) {
   isActive = false;
 } else if (href === "/") {
-  isActive = href === Astro.url.pathname;
+  const basePath = base.endsWith("/") ? base.slice(0, -1) : base;
+  isActive = Astro.url.pathname === base || Astro.url.pathname === basePath;
 } else {
-  isActive = Astro.url.pathname.includes(
-    typeof href === "string" ? href : href.href
-  );
+  const hrefPath = typeof href === "string" ? href : href.href;
+  const basePath = base.endsWith("/") ? base.slice(0, -1) : base;
+  const fullPath = basePath + (hrefPath.startsWith("/") ? hrefPath : "/" + hrefPath);
+  isActive = Astro.url.pathname.includes(fullPath) || Astro.url.pathname.includes(hrefPath);
 }
 ---
 
@@ -29,7 +44,7 @@ if (!href) {
     addClass,
   ]}
   aria-current={isActive ? "page" : undefined}
-  href={href}
+  href={finalHref}
   {...props}
   aria-label={`Go to ${text} page`}
 >
