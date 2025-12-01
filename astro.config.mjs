@@ -16,6 +16,7 @@ export default defineConfig({
   image: {
     service: sharpImageService(),
   },
-  site: "https://cojocarudavid.me",
+  site: 'https://albanlpcr.github.io', 
+  base: '/Portefolio',   
   integrations: [icon(), sitemap(), react()],
 });
