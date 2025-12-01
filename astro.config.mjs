@@ -17,6 +17,7 @@ export default defineConfig({
     service: sharpImageService(),
   },
   site: 'https://albanlpcr.github.io', 
-  base: '/Portefolio/',   
+  base: '/Portefolio/',  
+  trailingSlash: 'always', 
   integrations: [icon(), sitemap(), react()],
 });
