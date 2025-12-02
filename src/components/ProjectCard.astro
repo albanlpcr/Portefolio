@@ -83,9 +83,10 @@ const { name, role, url, description, languages, website, image, cahierDesCharge
     image && (
       <div class="mt-4 rounded-lg overflow-hidden">
         <img
-          src={image}
+          src={`${import.meta.env.BASE_URL}${image.startsWith('/') ? image.slice(1) : image}`}
           alt={`${name} project image`}
           class="w-full h-auto object-cover"
+          loading="lazy"
         />
       </div>
     )
