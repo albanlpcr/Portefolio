@@ -83,7 +83,13 @@ const { name, role, url, description, languages, website, image, cahierDesCharge
     image && (
       <div class="mt-4 rounded-lg overflow-hidden">
         <img
-          src={`${import.meta.env.BASE_URL}${image.startsWith('/') ? image.slice(1) : image}`}
+          src={(() => {
+            const base = import.meta.env.BASE_URL || "/";
+            const basePath = base.endsWith("/") ? base.slice(0, -1) : base;
+            // S'assurer que le chemin de l'image commence par /
+            const imagePath = image.startsWith("/") ? image : `/${image}`;
+            return `${basePath}${imagePath}`;
+          })()}
           alt={`${name} project image`}
           class="w-full h-auto object-cover"
           loading="lazy"
