@@ -2,7 +2,7 @@ export const tag: string = "@cojocaru-david";
 export const author: string = "Alban Laparcerie";
 export const github: string = "https://github.com/albanlpcr";
 
-export const title: string = "Alban - Developpeur Informatique";
+export const title: string = "Alban - Développeur Informatique";
 export const description: string =
   "Etudiant en 2ème année de BUT Informatique à l'IUT de Bordeaux, je suis particulièrement attiré par le développement backend. Ce portefolio est une vitrine sur mes projets et compétences informatiques. J'ai pour objectif d'effectuer un stage de 8 à 10 semaines entre le 6 avril et le 12 juin 2026.";
 export const country: string = "Bordeaux 33000";
@@ -38,9 +38,9 @@ interface Meta {
 export const defaultMeta: Meta = {
   title: "Alban Laparcerie - Accueil",
   description:
-    "Etudiant en 2ème année de BUT Informatique à l'IUT de Bordeaux, je suis particulièrement attiré par le développement backend." +
-    "Ce portefolio est une vitrine sur mes projets et compétences informatiques."
-    +"J'ai pour objectif d'effectuer un stage de 8 à 10 semaines entre le 6 avril et le 12 juin 2026.",
+    "Etudiant en 2ème année de BUT Informatique à l'IUT de Bordeaux, je suis particulièrement attiré par le développement backend. " +
+    "Ce portefolio est une vitrine sur mes projets et compétences informatiques. " +
+    "J'ai pour objectif d'effectuer un stage de 8 à 10 semaines entre le 6 avril et le 12 juin 2026.",
   keywords: [
     "alban laparcerie",
     "junior software developer",
